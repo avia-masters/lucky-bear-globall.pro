@@ -276,7 +276,6 @@ a:hover{color:#7acbff;text-shadow:0 0 25px rgba(74,184,255,.2)}
   if (btn && nav) { btn.addEventListener('click', function(){ nav.classList.toggle('open'); }); }
 })();
 
-/* 70 отзывов: 63×5★ + 7×4★ = 4.9. Пагинация по 7. Даты: январь–октябрь 2026. Имена русские. */
 var REVIEWS = [
  {n:"Алексей",s:5,d:"12.01.2026",t:"Вывод приходит за 0 секунд — проверил лично. Бонус 700% помог стартовать. Поддержка отвечает мгновенно."},
  {n:"Екатерина",s:5,d:"15.01.2026",t:"Огромный выбор слотов, интерфейс понятный. Вывела через USDT — деньги пришли сразу. Рекомендую."},
@@ -349,15 +348,14 @@ var REVIEWS = [
  {n:"Матвей",s:5,d:"04.08.2026",t:"Пополнил через СБП, выиграл, вывел. Всё за секунды. Рекомендую."},
  {n:"Арина",s:5,d:"07.08.2026",t:"Слоты с джекпотом — шанс сорвать куш. Выиграла, вывела мгновенно."}
 ];
+
 (function(){
   var perPage = 7;
   var totalPages = Math.ceil(REVIEWS.length / perPage);
-  var current = 1;
   var listEl = document.getElementById('review-list');
   var pagEl = document.getElementById('pagination');
   function stars(n){ var s=''; for(var i=0;i<n;i++) s+='★'; for(var j=n;j<5;j++) s+='☆'; return s; }
-  function render(page){
-    current = page;
+  function render(page, doScroll){
     var start = (page-1)*perPage;
     var items = REVIEWS.slice(start, start+perPage);
     listEl.innerHTML = items.map(function(r){
@@ -373,13 +371,15 @@ var REVIEWS = [
     pagEl.querySelectorAll('button').forEach(function(b){
       b.addEventListener('click', function(){
         var p = parseInt(b.getAttribute('data-page'),10);
-        if(p>=1 && p<=totalPages) render(p);
+        if(p>=1 && p<=totalPages) render(p, true);
       });
     });
-    var top = document.querySelector('.pagination');
-    if(top){ var y = top.getBoundingClientRect().top + window.pageYOffset - 100; window.scrollTo({top:y,behavior:'smooth'}); }
+    if(doScroll){
+      var y = pagEl.getBoundingClientRect().top + window.pageYOffset - 100;
+      window.scrollTo({top:y,behavior:'smooth'});
+    }
   }
-  render(1);
+  render(1, false);
 })();
 </script>
 </body>
