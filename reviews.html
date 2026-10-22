@@ -375,7 +375,8 @@ var REVIEWS = [
       });
     });
     if(doScroll){
-      var y = pagEl.getBoundingClientRect().top + window.pageYOffset - 100;
+      var headerH = document.querySelector('.site-header') ? document.querySelector('.site-header').offsetHeight : 0;
+      var y = listEl.getBoundingClientRect().top + window.pageYOffset - headerH - 20;
       window.scrollTo({top:y,behavior:'smooth'});
     }
   }
