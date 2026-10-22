@@ -91,8 +91,10 @@ a:hover{color:#7acbff;text-shadow:0 0 25px rgba(74,184,255,.2)}
 .step-card .step-num{display:inline-block;background:linear-gradient(135deg,#1a7acc,#4ab8ff);color:#fff;width:32px;height:32px;border-radius:50%;text-align:center;line-height:32px;font-weight:800;margin-bottom:10px}
 .step-card strong{display:block;color:#fff;font-size:18px;margin-bottom:6px}
 .step-card p{color:#8aaac8;font-size:14px}
-.app-preview{text-align:center;margin:30px 0}
-.app-preview img{max-width:100%;height:auto;border-radius:20px;border:1px solid rgba(26,48,80,.4);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.app-preview{background:rgba(17,29,53,.6);border:1px solid rgba(26,48,80,.4);border-radius:20px;padding:30px;display:flex;gap:30px;align-items:center;flex-wrap:wrap;margin:24px 0}
+.app-preview img{max-width:260px;width:100%;height:auto;border-radius:16px;display:block;flex-shrink:0}
+.app-preview div{flex:1;min-width:240px}
+@media (max-width:480px){.app-preview{padding:20px;flex-direction:column;text-align:center}.app-preview img{max-width:200px}}
 .footer-cta{background:linear-gradient(145deg,rgba(10,22,40,.8),rgba(15,32,64,.6));border-top:1px solid rgba(26,48,80,.3);border-bottom:1px solid rgba(26,48,80,.3);padding:50px 0}
 .footer-cta .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:30px}
 .footer-cta h2{color:#fff;font-size:28px}
